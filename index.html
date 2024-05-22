@@ -1,22 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Contact form</title>
+  <link rel="stylesheet" href="style.css">
 
+  <title>Frontend Mentor | Contact form</title>
+  <script src="index.js" defer></script>
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
+
   </style>
 </head>
-<body>
 
-  Contact Us
+<body>
+  <form class="contact-form" id="contact-form">
+    <h1 class="contact-form-title">Contact Us</h1>
+    <div class="contact-form-fields">
+      <div class="contact-form-input-fields">
+        <label for="firstname">First Name</label>
+        <input required id="firstname" name="firstname" type="text">
+      </div>
+      <div class="contact-form-input-fields">
+        <label for="lastname">Last Name</label>
+        <input required id="lastname" name="lastname" type="text">
+      </div>
+      <div class="contact-form-input-fields w-full">
+        <label for="email">Email Address</label>
+        <input required id="email" name="email" type="email">
+      </div>
+      <div class="contact-form-input-fields w-full">
+        <label>Query Type</label>
+        <div class="d-flex">
+          <div class="input-radio">
+            <input required type="radio" name="query-type" id="query-enquiry">
+            <label for="query-enquiry">General Enquiry</label>
+          </div>
+          <div class="input-radio">
+            <input type="radio" name="query-type" id="support-request">
+            <label for="support-request">Support Request</label>
+          </div>
+        </div>
+
+      </div>
+      <div class="contact-form-input-fields w-full">
+        <label for="message">Message</label>
+        <textarea required name="message" id="message" rows="3"></textarea>
+      </div>
+      <div class="contact-form-input-fields d-flex w-full">
+        <input required name="consent" id="consent" type="checkbox">
+        <label for="consent">I consent to being contacted by the team</label>
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Contact Us
 
   First Name
   This field is required
@@ -42,11 +84,12 @@
   Submit
 
   Message Sent!
-  Thanks for completing the form. We'll be in touch soon!
-  
+  Thanks for completing the form. We'll be in touch soon! -->
+
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+    Coded by <a href="https://github.com/RicardoAz15">Ricardo Rodrigues Azevedo</a>.
   </div>
 </body>
+
 </html>

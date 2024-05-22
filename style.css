@@ -1,0 +1,182 @@
+@font-face {
+    font-family: "Karla";
+    src: url("./assets/fonts/Karla-VariableFont_wght.ttf") format("ttf");
+    font-weight: 400 700;
+    font-display: swap;
+}
+
+:root {
+    --primary-light-green: 148 38 91;
+    --primary-red: 0 66 56;
+    --primary-green: 169 82 27;
+
+    --neutral-white: 0 0 100;
+    --neutral-grey: 187 24 22;
+    --neutral-dark: 187 24 22;
+
+    --border-radius: 0.5rem;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Karla";
+
+    color: hsl(var(--neutral-grey));
+    background-color: hsl(var(--primary-light-green));
+
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    min-height: 100dvh;
+}
+
+.contact-form {
+    background-color: hsl(var(--neutral-white));
+    padding: 2rem;
+    border-radius: var(--border-radius);
+
+    margin: auto;
+}
+
+.contact-form-title {
+    margin-top: 0;
+}
+
+.contact-form>button {
+    padding: 1rem;
+
+    color: hsl(var(--neutral-white));
+    background-color: hsl(var(--primary-green));
+
+    border: 1px solid;
+    border-radius: var(--border-radius);
+
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.contact-form-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    max-width: 75ch;
+}
+
+.contact-form-input-fields {
+    flex-grow: 1;
+    height: 100%;
+}
+
+.contact-form-input-fields label {
+    font-size: 16px;
+
+    text-wrap: wrap;    
+}
+
+.contact-form-input-fields:has(:is(input[required], textarea))>label::after {
+    content: " *";
+    color: hsl(var(--primary-green));
+}
+
+input,
+textarea,
+label,
+button {
+    cursor: pointer;
+}
+
+.contact-form-input-fields input:is(:not([type='radio'], [type='checkbox'])),
+.contact-form-input-fields textarea,
+.contact-form-input-fields .input-radio {
+    border: 1px solid;
+    border-radius: var(--border-radius);
+
+    margin-block: 0.5rem;
+    padding: .75rem 1rem;
+
+    width: 100%;
+    
+}
+
+.contact-form-input-fields>textarea {
+    resize: none;
+    height: 100%;
+    /* aspect-ratio: ; */
+}
+
+.contact-form-input-fields input:is(:active, :focus, :focus-within, :focus-visible, :hover),
+.contact-form-input-fields textarea:is(:active, :focus, :focus-within, :focus-visible, :hover),
+.input-radio:hover {
+    border-color: hsl(var(--primary-green));
+    outline-color: hsl(var(--primary-green));
+}
+
+.contact-form-input-fields input:is([type='radio'], [type='checkbox']) {
+    accent-color: hsl(var(--primary-green));
+}
+
+.contact-form-input-fields .input-radio {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1rem;
+}
+
+.contact-form-input-fields .input-radio > label{
+    padding-block: 1rem;
+    width: 100%;
+}
+
+.contact-form-input-fields .input-radio>input {
+    width: 2em;
+    aspect-ratio: 1;
+}
+
+.contact-form-input-fields .input-radio:has(input:checked){
+    background-color: hsl(var(--primary-light-green));
+    border-color:  hsl(var(--primary-green));
+}
+
+.d-flex {
+    display: flex;
+    column-gap: 1rem;
+    align-items: center;
+}
+
+.w-full {
+    width: 100%;
+}
+
+@media (width <768px) {
+    .d-flex {
+        flex-wrap: wrap;
+    }
+
+    label {
+        max-width: 25ch;
+    }
+
+    .contact-form-input-fields>textarea {
+        aspect-ratio: 2;
+    }
+
+    .contact-form {
+        margin-inline: 1rem;
+    }
+}
+
+.attribution {
+    margin-bottom: 1rem ;
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
