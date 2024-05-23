@@ -77,12 +77,12 @@
   const inputs = document.querySelectorAll("input,textarea");
 
   inputs.forEach((element) => {
+
     element.addEventListener("blur", (e) => {
-      if (e.target.value != '') return
-      e.target.classList.add("isBlured");
-    });
-    element.addEventListener("focus", (e) => {
-      e.target.classList.remove("isBlured");
+      if ((e.target.type !== 'checkbox' && e.target.value !== '') || (e.target.type === 'checkbox' && e.target.checked))
+        e.target.classList.remove("isBlured");
+
+      else e.target.classList.add("isBlured");
     });
   });
 

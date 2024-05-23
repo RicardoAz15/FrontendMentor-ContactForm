@@ -91,11 +91,6 @@ button {
     cursor: pointer;
 }
 
-input::placeholder,
-textarea::placeholder {
-    color: transparent;
-}
-
 .contact-form-group input:is(:not([type='radio'], [type='checkbox'])),
 .contact-form-group textarea,
 .contact-form-group .input-radio {
@@ -114,10 +109,13 @@ textarea::placeholder {
     height: 100%;
 }
 
-.contact-form-group input:is(:active, :focus, :focus-within, :focus-visible, :hover),
-.contact-form-group textarea:is(:active, :focus, :focus-within, :focus-visible, :hover),
+.contact-form-group input:is(:active, :focus, :focus-within, :hover),
+.contact-form-group textarea:is(:active, :focus, :focus-within, :hover),
 .input-radio:hover {
     border-color: hsl(var(--primary-green));
+}
+
+.contact-form-group input:focus-visible {
     outline-color: hsl(var(--primary-green));
 }
 
@@ -154,17 +152,16 @@ textarea::placeholder {
     display: none;
 }
 
-.contact-form-group:has(.isBlured):has(:invalid:not(:focus):placeholder-shown) input,
-.contact-form-group:has(.isBlured):has(:invalid:not(:focus):placeholder-shown) textarea {
+.contact-form-group:has(.isBlured):has(:invalid:placeholder-shown) input,
+.contact-form-group:has(.isBlured):has(:invalid:placeholder-shown) textarea {
     border-color: hsl(var(--primary-red));
-    outline-color: hsl(var(--primary-red));
 }
 
 
-.contact-form-group:has(.isBlured):has(:invalid:not(:focus):placeholder-shown,
+.contact-form-group:has(.isBlured):has(:invalid:placeholder-shown,
     [type='checkbox']:not(:checked)) .input-error,
-.contact-form-group:not(:has([type='radio']:checked)):has(.isBlured) .input-error,
-.contact-form-group:has(.isBlured):has(:invalid:not(:focus):not(:placeholder-shown)) .input-error-invalid {
+.contact-form-group:has(.isBlured):not(:has([type='radio']:checked)) .input-error,
+.contact-form-group:has(.isBlured):has(:invalid:not(:placeholder-shown)) .input-error-invalid {
     display: block;
 }
 
