@@ -68,18 +68,18 @@ body {
     max-width: 75ch;
 }
 
-.contact-form-input-fields {
+.contact-form-group {
     flex-grow: 1;
     height: 100%;
 }
 
-.contact-form-input-fields label {
+.contact-form-group label {
     font-size: 16px;
 
-    text-wrap: wrap;    
+    text-wrap: wrap;
 }
 
-.contact-form-input-fields:has(:is(input[required], textarea))>label::after {
+.contact-form-group:has(:is(input[required], textarea))>label::after {
     content: " *";
     color: hsl(var(--primary-green));
 }
@@ -91,9 +91,14 @@ button {
     cursor: pointer;
 }
 
-.contact-form-input-fields input:is(:not([type='radio'], [type='checkbox'])),
-.contact-form-input-fields textarea,
-.contact-form-input-fields .input-radio {
+input::placeholder,
+textarea::placeholder {
+    color: transparent;
+}
+
+.contact-form-group input:is(:not([type='radio'], [type='checkbox'])),
+.contact-form-group textarea,
+.contact-form-group .input-radio {
     border: 1px solid;
     border-radius: var(--border-radius);
 
@@ -101,46 +106,66 @@ button {
     padding: .75rem 1rem;
 
     width: 100%;
-    
+
 }
 
-.contact-form-input-fields>textarea {
+.contact-form-group>textarea {
     resize: none;
     height: 100%;
-    /* aspect-ratio: ; */
 }
 
-.contact-form-input-fields input:is(:active, :focus, :focus-within, :focus-visible, :hover),
-.contact-form-input-fields textarea:is(:active, :focus, :focus-within, :focus-visible, :hover),
+.contact-form-group input:is(:active, :focus, :focus-within, :focus-visible, :hover),
+.contact-form-group textarea:is(:active, :focus, :focus-within, :focus-visible, :hover),
 .input-radio:hover {
     border-color: hsl(var(--primary-green));
     outline-color: hsl(var(--primary-green));
 }
 
-.contact-form-input-fields input:is([type='radio'], [type='checkbox']) {
+.contact-form-group input:is([type='radio'], [type='checkbox']) {
     accent-color: hsl(var(--primary-green));
 }
 
-.contact-form-input-fields .input-radio {
+.contact-form-group .input-radio {
     display: flex;
     align-items: center;
     gap: 1rem;
     padding: 0 1rem;
 }
 
-.contact-form-input-fields .input-radio > label{
+.contact-form-group .input-radio>label {
     padding-block: 1rem;
     width: 100%;
 }
 
-.contact-form-input-fields .input-radio>input {
+.contact-form-group .input-radio>input {
     width: 2em;
     aspect-ratio: 1;
 }
 
-.contact-form-input-fields .input-radio:has(input:checked){
+.contact-form-group .input-radio:has(:checked) {
     background-color: hsl(var(--primary-light-green));
-    border-color:  hsl(var(--primary-green));
+    border-color: hsl(var(--primary-green));
+}
+
+.input-error,
+.input-error-invalid {
+    margin-block: .5rem;
+    color: hsl(var(--primary-red));
+    display: none;
+}
+
+.contact-form-group:has(.isBlured):has(:invalid:not(:focus):placeholder-shown) input,
+.contact-form-group:has(.isBlured):has(:invalid:not(:focus):placeholder-shown) textarea {
+    border-color: hsl(var(--primary-red));
+    outline-color: hsl(var(--primary-red));
+}
+
+
+.contact-form-group:has(.isBlured):has(:invalid:not(:focus):placeholder-shown,
+    [type='checkbox']:not(:checked)) .input-error,
+.contact-form-group:not(:has([type='radio']:checked)):has(.isBlured) .input-error,
+.contact-form-group:has(.isBlured):has(:invalid:not(:focus):not(:placeholder-shown)) .input-error-invalid {
+    display: block;
 }
 
 .d-flex {
@@ -162,17 +187,17 @@ button {
         max-width: 25ch;
     }
 
-    .contact-form-input-fields>textarea {
+    .contact-form-group>textarea {
         aspect-ratio: 2;
     }
 
-    .contact-form {
-        margin-inline: 1rem;
+    .contact-form-fields {
+        max-width: 35ch;
     }
 }
 
 .attribution {
-    margin-bottom: 1rem ;
+    margin-bottom: 1rem;
     font-size: 11px;
     text-align: center;
 }

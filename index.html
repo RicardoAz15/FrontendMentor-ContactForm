@@ -4,13 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="description" content="Form Page submition for a FrontendMentor challenge.">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="style.css">
 
   <title>Frontend Mentor | Contact form</title>
-  <script src="index.js" defer></script>
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
 
   </style>
@@ -20,19 +18,23 @@
   <form class="contact-form" id="contact-form">
     <h1 class="contact-form-title">Contact Us</h1>
     <div class="contact-form-fields">
-      <div class="contact-form-input-fields">
+      <div class="contact-form-group">
         <label for="firstname">First Name</label>
-        <input required id="firstname" name="firstname" type="text">
+        <input title="This field is required" placeholder="First Name" required id="firstname" name="firstname" type="text">
+        <p class="input-error">This field is required</p>
       </div>
-      <div class="contact-form-input-fields">
+      <div class="contact-form-group">
         <label for="lastname">Last Name</label>
-        <input required id="lastname" name="lastname" type="text">
+        <input title="This field is required" placeholder="Last Name" required id="lastname" name="lastname" type="text">
+        <p class="input-error">This field is required</p>
       </div>
-      <div class="contact-form-input-fields w-full">
+      <div class="contact-form-group w-full">
         <label for="email">Email Address</label>
-        <input required id="email" name="email" type="email">
+        <input title="This field is required" placeholder="Email" required id="email" name="email" type="email">
+        <p class="input-error">This field is required</p>
+        <p class="input-error-invalid">Please enter a valid email address</p>
       </div>
-      <div class="contact-form-input-fields w-full">
+      <div class="contact-form-group w-full">
         <label>Query Type</label>
         <div class="d-flex">
           <div class="input-radio">
@@ -44,52 +46,53 @@
             <label for="support-request">Support Request</label>
           </div>
         </div>
+        <p class="input-error">Please select a query type</p>
 
       </div>
-      <div class="contact-form-input-fields w-full">
+      <div class="contact-form-group w-full">
         <label for="message">Message</label>
-        <textarea required name="message" id="message" rows="3"></textarea>
+        <textarea title="This field is required" placeholder="Leave a message" required name="message" id="message"
+          rows="3"></textarea>
+        <p class="input-error">This field is required</p>
       </div>
-      <div class="contact-form-input-fields d-flex w-full">
-        <input required name="consent" id="consent" type="checkbox">
-        <label for="consent">I consent to being contacted by the team</label>
+      <div class="contact-form-group">
+        <div class="d-flex w-full">
+          <input title="To submit this form, please consent to being contacted" required name="consent" id="consent"
+            type="checkbox">
+          <label for="consent">I consent to being contacted by the team</label>
+        </div>
+        <p class="input-error">To submit this form, please consent to being contacted</p>
       </div>
     </div>
     <button type="submit">Submit</button>
   </form>
-
-  <!-- Contact Us
-
-  First Name
-  This field is required
-
-  Last Name
-  This field is required
-
-  Email Address
-  Please enter a valid email address
-  This field is required
-
-  Query Type
-  General Enquiry
-  Support Request
-  Please select a query type
-
-  Message
-  This field is required
-
-  I consent to being contacted by the team
-  To submit this form, please consent to being contacted
-
-  Submit
-
-  Message Sent!
-  Thanks for completing the form. We'll be in touch soon! -->
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
     Coded by <a href="https://github.com/RicardoAz15">Ricardo Rodrigues Azevedo</a>.
   </div>
 </body>
+
+<script>
+  const inputs = document.querySelectorAll("input,textarea");
+
+  inputs.forEach((element) => {
+    element.addEventListener("blur", (e) => {
+      if (e.target.value != '') return
+      e.target.classList.add("isBlured");
+    });
+    element.addEventListener("focus", (e) => {
+      e.target.classList.remove("isBlured");
+    });
+  });
+
+  const form = document.getElementById('contact-form')
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Well Done 🥂')
+  })
+
+</script>
 
 </html>
